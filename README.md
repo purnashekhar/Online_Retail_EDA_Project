@@ -86,8 +86,6 @@ The analysis covers **data cleaning, feature engineering, visualization, and bus
 | **9. Feature Engineering** | Created Revenue, MonthYear, Weekday, Quantity bins |
 | **10. Visualization Summary** | Built comprehensive dashboards & summary charts |
 | **11. Insights & Conclusions** | Business insights & patterns identified |
-| **12. GitHub Preparation** | Cleaned notebook, added markdowns, created README |
-
 ---
 
 ## 📈 Key Insights & Findings
