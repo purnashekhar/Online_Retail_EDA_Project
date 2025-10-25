@@ -118,8 +118,10 @@ The analysis covers **data cleaning, feature engineering, visualization, and bus
 - Country-wise Revenue Chart → Country performance  
 - Monthly Revenue Trend → Seasonal trends  
 - Pairplot → Quantity, UnitPrice, Revenue relationships  
+<img width="1400" height="500" alt="monthly_revenue_trend (1)" src="https://github.com/user-attachments/assets/cf445928-2b31-4cee-93e3-4707c2380b27" />
 
 <img width="1302" height="556" alt="download" src="https://github.com/user-attachments/assets/ed661811-1792-4c0e-959f-2ba1e5e45585" />
+<img width="1152" height="787" alt="download (1)" src="https://github.com/user-attachments/assets/0da42d52-e137-453e-b402-6a0559e12c35" />
 
 
 ---
@@ -133,11 +135,11 @@ The analysis covers **data cleaning, feature engineering, visualization, and bus
 ---
 
 ## 👨‍💻 Author
-**Your Name**  
+**Purna Shekhar**  
 Data Analyst | Python | Power BI | Excel | SQL  
-📧 your.email@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile)  
-🔗 [GitHub](https://github.com/yourusername)
+📧 purnashekhar2352@gmail.com
+🔗 www.linkedin.com/in/bandi-purnashekhar 
+🔗 [GitHub](https://github.com/purnashekhar)
 
 ---
 
