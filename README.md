@@ -58,7 +58,8 @@ The analysis covers **data cleaning, feature engineering, visualization, and bus
 
 📁 **Rows:** 1048575  
 📊 **Columns:** 8  
-📚 **Source:** [UCI Machine Learning Repository – Online Retail II Dataset](https://archive.ics.uci.edu/ml/datasets/online+retail+ii)
+📚 **Source:** [UCI Machine Learning Repository – Online Retail II Dataset](https://archive.ics.uci.edu/ml/datasets/online+retail+ii),(https://www.kaggle.com/datasets/vijayuv/onlineretail)
+
 
 ---
 
