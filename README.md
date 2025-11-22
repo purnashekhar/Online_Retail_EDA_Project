@@ -1,126 +1,242 @@
-# 📊 Online Retail EDA Project (Python | Pandas | Matplotlib | Seaborn | Data Analysis)
 
-## 🧭 Project Overview
-This project presents an **end-to-end Exploratory Data Analysis (EDA)** on the **Online Retail II Dataset** using **Python and Google Colab**.  
-The analysis covers **data cleaning, feature engineering, visualization, and business insights** to understand sales patterns, customer behavior, and revenue trends.
+# 📦 **Online Retail – Exploratory Data Analysis (EDA) Project**
 
----
-
-## 🎯 Project Objectives
-- Analyze customer purchase patterns and top-selling products  
-- Identify outliers, missing values, and data inconsistencies  
-- Explore revenue trends by time, country, and product  
-- Derive actionable business insights from transaction data  
+### *(Python | Pandas | Matplotlib | Seaborn | Power BI /Data Analysis)*
 
 ---
 
-## 👥 Stakeholders & Key Questions
+## 🧭 **Project Objective**
 
-### **Stakeholders**
-- **Business Manager / CEO** – Interested in overall sales performance, top products, and revenue trends.  
-- **Sales & Marketing Team** – Focused on customer behavior, top buyers, and promotional opportunities.  
-- **Inventory / Supply Chain Team** – Concerned with product demand, stock levels, and seasonal trends.  
-- **Data Analyst / Data Science Team** – Ensures data quality and prepares features for reporting or predictive models.  
+The objective of this Online Retail EDA project was to analyze transactional data from an international retail store to understand:
 
-### **Stakeholder Questions**
-| Stakeholder | Key Questions |
-|------------|---------------|
-| **Business Manager / CEO** | Which products and customers drive the most revenue? Are sales growing over time? |
-| **Sales & Marketing Team** | Who are the top customers? How do sales vary across countries and seasons? Which products to promote? |
-| **Inventory / Supply Chain Team** | Which products sell the most? Are there seasonal peaks in demand? Are there unusual stock movements (negative quantities/returns)? |
-| **Data Analyst / Data Science Team** | Are there missing or inconsistent entries? Which outliers need treatment? How can we engineer features for better analysis? |
+* Overall sales performance
+* Customer purchasing behavior
+* Product demand patterns
+* Seasonal and monthly sales trends
+
+The project delivers insights on **top products**, **top customers**, **country-level revenue**, and **time-based demand patterns**, helping the business improve **strategic decisions**, **forecasting**, and **inventory planning**.
 
 ---
 
-## 📊 EDA Questions
+## 👥 **Stakeholder Questions**
 
-1. How are the `Quantity` values distributed? Are there negative or extremely high quantities?  
-2. What is the distribution of `UnitPrice`? Which products generate the highest revenue (`Quantity × UnitPrice`)?  
-3. How many unique customers are there? Who are the top customers by total purchases?  
-4. Which `StockCode` or `Description` products are sold the most?  
-5. How does sales vary across different countries? Which countries contribute the most to revenue?  
-6. Are there seasonal trends in sales? How does `InvoiceDate` affect sales (monthly or daily patterns)?  
-7. Are there missing values or unusual entries that could affect analysis, such as `CustomerID = Guest` or negative `Quantity`?  
+The dataset contained **540K+ rows** and multiple features such as InvoiceNo, StockCode, Description, Quantity, UnitPrice, CustomerID, and Country.
 
----
+The project answers these business-critical questions:
 
-## 🧮 Dataset Information
-| Feature | Description |
-|----------|-------------|
-| **Invoice** | Invoice number of each transaction |
-| **StockCode** | Product (item) code |
-| **Description** | Product name or item description |
-| **Quantity** | Number of items purchased (may include returns if negative) |
-| **InvoiceDate** | Date and time of transaction |
-| **UnitPrice** | Price per unit of product |
-| **CustomerID** | Unique customer identifier |
-| **Country** | Country where purchase was made |
+### **Key Business Questions**
 
-📁 **Rows:** 1048575  
-📊 **Columns:** 8  
-📚 **Source:** [UCI Machine Learning Repository – Online Retail II Dataset](https://archive.ics.uci.edu/ml/datasets/online+retail+ii),(https://www.kaggle.com/datasets/vijayuv/onlineretail)
-
+* How are **Quantity** and **UnitPrice** distributed? Are there negative or extreme values?
+* Which products generate the **highest revenue**?
+* Who are the **top customers**?
+* How many **unique customers** does the business have?
+* Which **countries contribute** most to total revenue?
+* Which **months** show the highest sales?
+* Are there **seasonal or weekday** sales patterns?
+* What data quality issues exist (missing IDs, negative quantity, duplicates)?
+* How do sales differ across **quantity segments** (1–5, 6–20, 100+)?
 
 ---
 
-## ⚙️ Tools & Libraries Used
-- **Python 3**
-- **Google Colab**
-- **pandas** – data wrangling  
-- **numpy** – numerical operations  
-- **matplotlib & seaborn** – data visualization  
-- **datetime** – date-time feature extraction  
+## 🧼 **Data Cleaning & Preparation**
+
+### ✔ **Data Cleaning Steps**
+
+* Removed **duplicate** records
+* Converted `InvoiceDate` → datetime
+* Converted `CustomerID` → string
+* Replaced missing CustomerIDs with `"Guest"`
+* Removed invalid transactions:
+
+  * Negative **Quantity**
+  * Negative **UnitPrice**
+* Cleaned Description field and replaced missing values with `"None"`
+
+### ✔ **Feature Engineering**
+
+New features were created for deeper analysis:
+
+| Feature            | Description                         |
+| ------------------ | ----------------------------------- |
+| **Revenue**        | Quantity × UnitPrice                |
+| **InvoiceYear**    | Year extracted from date            |
+| **InvoiceMonth**   | Month extracted for trend analysis  |
+| **MonthYear**      | Combined year–month for time-series |
+| **InvoiceWeekday** | Day of week                         |
+| **QuantityBin**    | 1–5, 6–20, 21–50, 51–100, 100+      |
+| **TopProduct**     | High-selling product labels         |
+
+These features support revenue segmentation, trend discovery, and customer analysis.
 
 ---
 
-## 🧩 Project Steps
-| Step | Description |
-|------|--------------|
-| **1. Project Setup** | Created folders, virtual environment, and installed dependencies |
-| **2. Data Understanding** | Inspected dataset shape, datatypes, and missing values |
-| **3. Data Cleaning** | Filled missing values, removed duplicates, fixed data types |
-| **4. EDA Questions** | Framed analytical questions from stakeholder perspective |
-| **5. Univariate Analysis** | Distribution plots for numeric & categorical features |
-| **6. Bivariate Analysis** | Correlation, scatterplots, and comparisons |
-| **7. Feature Relationships** | GroupBy aggregations, correlation matrix, pairplots |
-| **8. Outlier Detection & Treatment** | Removed negative quantities & extreme prices |
-| **9. Feature Engineering** | Created Revenue, MonthYear, Weekday, Quantity bins |
-| **10. Visualization Summary** | Built comprehensive dashboards & summary charts |
-| **11. Insights & Conclusions** | Business insights & patterns identified |
+## 📊 **Data Analysis**
+
+The analysis was performed using **Python (Pandas, NumPy)** and visualized using **Matplotlib and Seaborn**. A final dashboard was built in **Power BI**.
+
+### **📆 Sales Trends**
+
+* **November** recorded the highest revenue (~2.9M)
+* **October** was the second-highest (~2.2M)
+* Clear **Q4 spike** indicates holiday-driven demand
+* Monthly fluctuations reveal seasonal buying behavior
+
+### **📦 Product Performance**
+
+Top products by revenue include:
+
+* **REGENCY CAKESTAND**
+* **DOTCOM POSTAGE**
+* **WHITE HANGING HEART**
+* **PARTY BUNTING**
+* **JUMBO BAG RED**
+
+These products consistently drive a major share of total revenue.
+
+### **👥 Customer Analysis**
+
+* Unique Customers: **~5,851**
+* Top customers (IDs: **10, 18102, 14646**) contribute disproportionately high revenue
+* Pareto pattern observed: **20% customers → 80% revenue**
+
+### **🌎 Geographic Analysis**
+
+Top revenue-generating countries:
+
+* **United Kingdom**: 85%+ share
+* Netherlands, Germany, France, Ireland contribute modest but promising revenue
+
+### **↩️ Order Status / Returns**
+
+* Negative quantities represent returns
+* Returns are minimal but important for outlier handling and profitability insights
+
+### **📏 Quantity & Pricing Patterns**
+
+* Most purchases occur in **1–5 units**
+* Quantity **100+ accounts for 15%+ of revenue**, indicating bulk buying
+* UnitPrice mostly low, with some high-value outliers removed during cleaning
+
+### **📅 Weekday Analysis**
+
+* **Wednesday–Friday** → highest sales
+* **Saturday** → lowest, showing weekend drop
+* Useful for planning staffing & promotions
+
 ---
 
-## 📈 Key Insights & Findings
+## 📊 **Dashboard Summary (Power BI)**
 
-- 💰 **Revenue Analysis:** Total revenue dominated by the UK, with seasonal spikes in November–December.  
-- 📦 **Product Performance:** A few top products contribute the majority of total sales.  
-- 👥 **Customer Behavior:** Repeat customers drive high revenue; guests are significant but untapped.  
-- 🌍 **Country Trends:** UK dominates; Germany and France show growth potential.  
-- 📆 **Time Patterns:** Peak sales occur in Q4; weekday and hour patterns align with shopping behavior.  
-- ⚠️ **Data Quality:** Negative quantities and missing CustomerIDs were handled; duplicates removed.
-
----
-
-## 🧠 Insights & Conclusions
-
-- Strong overall sales performance with **high-revenue products** and **top customers** identified.  
-- Seasonal trends suggest **holiday-focused marketing**.  
-- Opportunity to **convert guest users to registered customers** for loyalty.  
-- Focus on **inventory optimization** and top-performing products.  
-- Dataset cleaning and feature engineering ensure reliable analysis for business decisions.
-
----
-
-## 📊 Sample Visualizations
-- Histogram / Boxplot → Quantity & UnitPrice distributions  
-- Correlation Heatmap → Numeric feature relationships  
-- Top Products Barplot → Top 10 products by revenue  
-- Country-wise Revenue Chart → Country performance  
-- Monthly Revenue Trend → Seasonal trends  
-- Pairplot → Quantity, UnitPrice, Revenue relationships  
+The Power BI dashboard includes:
 <img width="1400" height="500" alt="monthly_revenue_trend (1)" src="https://github.com/user-attachments/assets/cf445928-2b31-4cee-93e3-4707c2380b27" />
 
 <img width="1302" height="556" alt="download" src="https://github.com/user-attachments/assets/ed661811-1792-4c0e-959f-2ba1e5e45585" />
 <img width="1152" height="787" alt="download (1)" src="https://github.com/user-attachments/assets/0da42d52-e137-453e-b402-6a0559e12c35" />
+
+
+### **KPI Cards**
+
+* **Total Revenue**
+* **Average Sales**
+* **Total Customers**
+* **Total Invoices**
+
+### **Visualizations**
+
+* Top 10 Customers (bar chart)
+* Top 10 Products (bar chart)
+* Revenue by Country (map)
+* QuantityBin distribution (donut chart)
+* Monthly Revenue Trend (line chart)
+* Yearly Revenue Summary (stacked bar chart)
+* Weekday revenue (area / line chart)
+
+### **Slicers**
+
+* Month
+* Country
+* CustomerID
+* QuantityBin
+
+This enables dynamic exploration of sales performance.
+
+---
+
+## ⭐ **Key Insights**
+
+* **Total Revenue:** ~**19.2M**
+* **UK Dominance:** UK contributes **>85%** of revenue
+* **High-Value Customers:** Top 5 customers drive significant revenue
+* **Seasonal Trends:** Strong sales in **Oct–Nov**, indicating Q4 demand
+* **Quantity Behavior:** Small quantities dominate, but bulk orders significantly boost revenue
+* **Top Products:** A few products consistently outperform across the year
+* **Weekday Pattern:** Wednesday–Friday strongest; Saturday weakest
+* **Returns:** Minimal but valuable for data quality and profitability analysis
+
+---
+
+## 🏁 **Final Conclusion**
+
+To improve business performance:
+
+* Focus on **high-revenue products** with targeted advertising
+* Strengthen bonds with **top customers** via loyalty incentives
+* Prepare inventory for **Q4** seasonal demand
+* Target **international expansion** outside the UK
+* Develop separate strategies for **retail vs bulk buyers**
+* Improve data logging for missing CustomerIDs and check pricing outliers
+
+These actions will improve **revenue**, **customer retention**, and **inventory efficiency**.
+
+---
+
+## 🛠 **Methods Used**
+
+### **Tools & Technologies**
+
+* Python (Pandas, NumPy)
+* Matplotlib & Seaborn
+* Power BI
+
+### **Techniques**
+
+* Data Cleaning
+* Feature Engineering
+* Descriptive Statistics
+* Time-Series Analysis
+* Customer & Product Segmentation
+
+### **Python Methods Used**
+
+* `groupby()`, `value_counts()`, `agg()`
+* `dt.month`, `dt.year`, `apply()`
+* `describe()`, `corr()`
+
+### **Visualization Types**
+
+* Bar Charts
+* Line Charts
+* Donut Chart
+* KPI Cards
+* Heatmaps
+* Pairplots
+* Boxplots
+* Histograms
+* Country Map Chart
+
+### **Analysis Focus**
+
+* Revenue
+* Customer segmentation
+* Product performance
+* Country-level sales
+* Seasonal trends
+* Outlier analysis
+
+---
+
+
+
 
 
 ---
